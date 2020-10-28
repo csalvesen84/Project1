@@ -116,11 +116,27 @@
         <input type="text" id="last30"><br><br>
         <!--buttons for calculating or resetting-->
         <input type="button" onclick="calcGPA()" value="CALCULATE"><br><br>
-        <input type="button" value="RESET"><br>
+        <input type="button" onclick="clearCircle()" value="RESET"><br>
         <p id="finalOutput"></p>
     </form>
 
 <script>
+    function clearCircle() {
+        document.getElementById("IS 201").value = "blank";
+        document.getElementById("IS 303/CS 142").value = "blank";
+        document.getElementById("ACC 200").value = "blank";
+        document.getElementById("FIN 201").value = "blank";
+        document.getElementById("MKTG 201").value = "blank";
+        document.getElementById("overall").value = "";
+        document.getElementById("last30").value = "";
+        document.getElementById("retake IS 201").checked = false;
+        document.getElementById("retake IS 303/CS 142").checked = false;
+        document.getElementById("retake ACC 200").checked = false;
+        document.getElementById("retake FIN 201").checked = false;
+        document.getElementById("retake MKTG 201").checked = false;
+        document.getElementById("finalOutput").innerHTML = "";
+        document.getElementById("IS 201").focus();
+    }
 
     function round(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
