@@ -33,8 +33,8 @@
         <input type="checkbox" id="retake IS 201" name="retake IS 201">
         <label for="retake IS 201">Retake</label><br>
         <br><br>
-        <label for="IS 303">IS 303</label>
-        <select name="IS 303" id="IS 303">
+        <label for="IS 303/CS 142">IS 303/CS 142</label>
+        <select name="IS 303/CS 142" id="IS 303/CS 142">
             <option value="blank"></option>
             <option value="A">A</option>
             <option value="A-">A-</option>
@@ -49,8 +49,8 @@
             <option value="D-">D-</option>
             <option value="E">E</option>
         </select>
-        <input type="checkbox" id="retake IS 303" name="retake IS 303">
-        <label for="retake IS 303">Retake</label><br>
+        <input type="checkbox" id="retake IS 303/CS 142" name="retake IS 303/CS 142">
+        <label for="retake IS 303/CS 142">Retake</label><br>
         <br><br>
         <label for="ACC 200">ACC 200</label>
         <select name="ACC 200" id="ACC 200">
@@ -240,8 +240,8 @@ function appChance() {
     tempIsRetake = document.getElementById("retake IS 201");
     IS201 = toGrade(tempLetter, tempIsRetake);
 
-    tempLetter = document.getElementById("IS 303");
-    tempIsRetake = document.getElementById("retake IS 303");
+    tempLetter = document.getElementById("IS 303/CS 142");
+    tempIsRetake = document.getElementById("retake IS 303/CS 142");
     IS303 = toGrade(tempLetter, tempIsRetake);
 
     tempLetter = document.getElementById("ACC 200");
