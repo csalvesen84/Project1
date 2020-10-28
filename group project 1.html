@@ -115,7 +115,7 @@
         <label for="last30">BYU Last 30 Credits GPA:</label>
         <input type="text" id="last30"><br><br>
         <!--buttons for calculating or resetting-->
-        <input type="button" value="CALCULATE"><br><br>
+        <input type="button" onclick="calcGPA" value="CALCULATE"><br><br>
         <input type="button" value="RESET">
     </form>
 
@@ -219,7 +219,7 @@ function toGrade(letter, isRetake) {
     }
 }
 
-function appChance() {
+function calcGPA() {
     var tempLetter;
     var tempIsRetake;
     var IS201;
