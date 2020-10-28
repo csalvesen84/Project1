@@ -113,6 +113,10 @@
         <input type="button" onclick="calcGPA()" value="CALCULATE"><br><br>
         <input type="button" onclick="clearCircle()" value="RESET"><br>
         <p id="finalOutput"></p>
+        <!--Put circle on the page-->
+        <svg height="100" width="100">
+            <circle id="myCircle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" display = "none" /></svg>
+            
     </form>
 
 <script>
@@ -351,13 +355,19 @@ function calcGPA() {
     document.getElementById("finalOutput").innerHTML = appGPA;
 
     if (appGPA >= 3.7) {
-        alert("Green");
+        
+        document.getElementById("myCircle").style.display = "block";                                         
+        document.getElementById("myCircle").style.fill="green";
     }
     else if (appGPA >= 3.4) {
-        alert("Yellow");
+       
+        document.getElementById("myCircle").style.display = "block";                                         
+        document.getElementById("myCircle").style.fill="yellow";
     }
     else {
-        alert("Red");
+       
+        document.getElementById("myCircle").style.display = "block";                                         
+        document.getElementById("myCircle").style.fill="red";
     }
 
 }
