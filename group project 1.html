@@ -1,0 +1,291 @@
+<!--
+    Ethan Westfall, Connor Salvesen, John Tippets, Josh Rencher, Moroni Myers
+    Section 001
+    Group 5
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Project #1</title>
+</head>
+<body>
+    <!--drop down menu for all five courses-->
+    <form action="/action_page.php">
+        <label for="IS 201">IS 201</label>
+        <select name="IS 201" id="IS 201">
+            <option value="blank"></option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <!--check marked "Retake" box-->
+        <input type="checkbox" id="retake IS 201" name="retake IS 201">
+        <label for="retake IS 201">Retake</label><br>
+        <br><br>
+        <label for="IS 303">IS 303</label>
+        <select name="IS 303" id="IS 303">
+            <option value="blank"></option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake IS 303" name="retake IS 303">
+        <label for="retake IS 303">Retake</label><br>
+        <br><br>
+        <label for="ACC 200">ACC 200</label>
+        <select name="ACC 200" id="ACC 200">
+            <option value="blank"></option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake ACC 200" name="retake ACC 200">
+        <label for="retake ACC 200">Retake</label><br>
+        <br><br>
+        <label for="FIN 201">FIN 201</label>
+        <select name="FIN 201" id="FIN 201">
+            <option value="blank"></option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake FIN 201" name="retake FIN 201">
+        <label for="retake FIN 201">Retake</label><br>
+        <br><br>
+        <label for="MKTG 201">MKTG 201</label>
+        <select name="MKTG 201" id="MKTG 201">
+            <option value="blank"></option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake MKTG 201" name="retake MKTG 201">
+        <label for="retake MKTG 201">Retake</label><br>
+        <br><br>
+        <!--text inputs for Overall and Last 30 credit GPAs-->
+        <label for="overall">BYU Overall GPA:</label>
+        <input type="text" id="overall"><br><br>
+        <label for="last30">BYU Last 30 Credits GPA:</label>
+        <input type="text" id="last30"><br><br>
+        <!--buttons for calculating or resetting-->
+        <input type="button" value="CALCULATE"><br><br>
+        <input type="button" value="RESET">
+    </form>
+
+<script>
+
+    function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+function toGrade(letter, isRetake) {
+    if (letter == "A") {
+        if (isRetake == "Y") {
+            return 3.7;
+        }
+        else {
+            return 4.0;
+        }
+    }
+    else if (letter == "A-") {
+        if (isRetake == "Y") {
+            return 3.4;
+        }
+        else {
+            return 3.7;
+        }
+    }
+    else if (letter == "B+") {
+        if (isRetake == "Y") {
+            return 3;
+        }
+        else {
+            return 3.4;
+        }
+    }
+    else if (letter == "B") {
+        if (isRetake == "Y") {
+            return 2.7;
+        }
+        else {
+            return 3;
+        }
+    }
+    else if (letter == "B-") {
+        if (isRetake == "Y") {
+            return 2.4;
+        }
+        else {
+            return 2.7;
+        }
+    }
+    else if (letter == "C+") {
+        if (isRetake == "Y") {
+            return 2;
+        }
+        else {
+            return 2.4;
+        }
+    }
+    else if (letter == "C") {
+        if (isRetake == "Y") {
+            return 1.7;
+        }
+        else {
+            return 2;
+        }
+    }
+    else if (letter == "C-") {
+        if (isRetake == "Y") {
+            return 1.4;
+        }
+        else {
+            return 1.7;
+        }
+    }
+    else if (letter == "D+") {
+        if (isRetake == "Y") {
+            return 1;
+        }
+        else {
+            return 1.4;
+        }
+    }
+    else if (letter == "D") {
+        if (isRetake == "Y") {
+            return 0.7;
+        }
+        else {
+            return 1;
+        }
+    }
+    else if (letter == "D-") {
+        if (isRetake == "Y") {
+            return 0;
+        }
+        else {
+            return .7;
+        }
+    }
+    else {
+        return 0;
+    }
+}
+
+function appChance() {
+    var tempLetter;
+    var tempIsRetake;
+    var IS201;
+    var IS303;
+    var ACC200;
+    var FIN201;
+    var MKTG201;
+    var sumBusPrereq;
+    var ovrGPA;
+    var last30GPA;
+    var appGPA;
+
+    //data collecting. Will need to be switched with HTML drop downs, but keep the function to bring back a number to the letter grade
+    //Please note I've only prepared for exact versions of inputs for testing purposes. Lower case grades, or spaces between the letter and
+    //the plus or minus will result in a 0 for that section
+
+    tempLetter = document.getElementById("IS 201");
+    tempIsRetake = document.getElementById("retake IS 201");
+    IS201 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = document.getElementById("IS 303");
+    tempIsRetake = document.getElementById("retake IS 303");
+    IS303 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = document.getElementById("ACC 200");
+    tempIsRetake = document.getElementById("retake ACC 200");
+    ACC200 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = document.getElementById("FIN 201");
+    tempIsRetake = document.getElementById("retake FIN 201");
+    FIN201 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = document.getElementById("MKTG 201");
+    tempIsRetake = document.getElementById("retake MKTG 201");
+    MKTG201 = toGrade(tempLetter, tempIsRetake);
+
+    ovrGPA = document.getElementById("overall");
+
+    last30GPA = document.getElementById("last30");
+
+    //Next we combine the scores of FIN 201, ACC 200, and MKTG 201 into 1 score
+    sumBusPrereq = (ACC200 + FIN201 + MKTG201)/3;
+
+    //This section we are calculating the application GPA finding the average of all of our scores. Because we have already combined ACC, FIN, and MKTG
+    //we do not need to do anything specific for weighting, as each is 20%, so we do a simple average calculation
+
+    appGPA = (IS201 + IS303 + sumBusPrereq + ovrGPA + last30GPA)/5;
+    appGPA = round(appGPA, 2);
+
+    //Now we simply return either green, yellow or red, as well as the calculated GPA
+    // These should be switched out with the html equivalents
+
+    alert(appGPA);
+
+    if (appGPA >= 3.7) {
+        alert("Green");
+    }
+    else if (appGPA >= 3.4) {
+        alert("Yellow");
+    }
+    else {
+        alert("Red");
+    }
+
+}
+</script>
+
+</body>
+</html>
