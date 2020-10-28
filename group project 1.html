@@ -115,7 +115,7 @@
         <label for="last30">BYU Last 30 Credits GPA:</label>
         <input type="text" id="last30"><br><br>
         <!--buttons for calculating or resetting-->
-        <input type="button" onclick="calcGPA" value="CALCULATE"><br><br>
+        <input type="button" onclick="calcGPA()" value="CALCULATE"><br><br>
         <input type="button" value="RESET">
     </form>
 
@@ -236,29 +236,54 @@ function calcGPA() {
     //Please note I've only prepared for exact versions of inputs for testing purposes. Lower case grades, or spaces between the letter and
     //the plus or minus will result in a 0 for that section
 
-    tempLetter = document.getElementById("IS 201");
-    tempIsRetake = document.getElementById("retake IS 201");
+    tempLetter = (document.getElementById("IS 201").value);
+    if (document.getElementById("retake IS 201").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
     IS201 = toGrade(tempLetter, tempIsRetake);
 
-    tempLetter = document.getElementById("IS 303/CS 142");
-    tempIsRetake = document.getElementById("retake IS 303/CS 142");
+    tempLetter = (document.getElementById("IS 303/CS 142").value);
+    if (document.getElementById("retake IS 303/CS 142").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
     IS303 = toGrade(tempLetter, tempIsRetake);
 
-    tempLetter = document.getElementById("ACC 200");
-    tempIsRetake = document.getElementById("retake ACC 200");
+    tempLetter = (document.getElementById("ACC 200").value);
+    if (document.getElementById("retake ACC 200").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
     ACC200 = toGrade(tempLetter, tempIsRetake);
 
-    tempLetter = document.getElementById("FIN 201");
-    tempIsRetake = document.getElementById("retake FIN 201");
+    tempLetter = (document.getElementById("FIN 201").value);
+    if (document.getElementById("retake FIN 201").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
     FIN201 = toGrade(tempLetter, tempIsRetake);
 
-    tempLetter = document.getElementById("MKTG 201");
-    tempIsRetake = document.getElementById("retake MKTG 201");
+    tempLetter = (document.getElementById("MKTG 201").value);
+    if (document.getElementById("retake MKTG 201").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
     MKTG201 = toGrade(tempLetter, tempIsRetake);
 
-    ovrGPA = document.getElementById("overall");
+    ovrGPA = parseFloat((document.getElementById("overall").value));
 
-    last30GPA = document.getElementById("last30");
+    last30GPA = parseFloat((document.getElementById("last30").value));
 
     //Next we combine the scores of FIN 201, ACC 200, and MKTG 201 into 1 score
     sumBusPrereq = (ACC200 + FIN201 + MKTG201)/3;
@@ -268,6 +293,7 @@ function calcGPA() {
 
     appGPA = (IS201 + IS303 + sumBusPrereq + ovrGPA + last30GPA)/5;
     appGPA = round(appGPA, 2);
+
 
     //Now we simply return either green, yellow or red, as well as the calculated GPA
     // These should be switched out with the html equivalents
