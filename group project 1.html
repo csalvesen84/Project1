@@ -9,13 +9,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project #1</title>
-    <style>
-        body {
-            background-color: azure;
-        }
-        h3 {
+<style>
+    
+       body {
+            background:azure;
+        } 
+        
+        h3,h1,h5 {
             font-family:sans-serif;
             text-align: center;
+            top: 50;
         }
         p {
             font-family: 'Times New Roman', Times, serif;
@@ -27,124 +30,58 @@
             font-style: italic;
             text-align: center;
         }
-          
-    </style>
-    <!--IS program info and Curriculum-->
-    <h3> Program Overview</h3>
-    <p> The BS Information Systems program is available as a four-year traditional degree or as a five-year integrated option where students earn both the BS IS and MISM degrees. The BS IS program is a 64-credit degree including pre-management, junior core, management core, and a capstone.</p>
-    <h3>Curriculum</h3>
-    <p>Information systems students learn to define, develop, and maintain the information system infrastructure that supports the operations of all businesses, governments, and other institutions. The BS Information Systems degree develops the ability to function effectively as a professional, applying state-of-the-art technology in solving business problems. Students are trained in business and information systems and taught to understand complex business environments.<br><br>
-         Built on a solid foundation of business courses, the curriculum advances students’ understanding of technologies in the design and development of information systems. They gain technical expertise in systems analysis; systems design and implementation; database development and management; programming; telecommunications networking; 2-tier, 3-tier, and n-tier application development; and web application development.</p>
-    <!--Link to BYU IS department website-->
-    <a href="https://marriottschool.byu.edu/infosys/" target="_blank">Visit BYU IS!</a><br><br>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
 
-    <!--drop down menu for all five courses-->
-    <form action="/action_page.php">
-        <label for="IS 201">IS 201</label>
-        <select name="IS 201" id="IS 201">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="E">E</option>
-        </select>
-        <!--check marked "Retake" box-->
-        <input type="checkbox" id="retake IS 201" name="retake IS 201">
-        <label for="retake IS 201">Retake</label><br>
-        <br><br>
-        <label for="IS 303/CS 142">IS 303/CS 142</label>
-        <select name="IS 303/CS 142" id="IS 303/CS 142">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="E">E</option>
-        </select>
-        <input type="checkbox" id="retake IS 303/CS 142" name="retake IS 303/CS 142">
-        <label for="retake IS 303/CS 142">Retake</label><br>
-        <br><br>
-        <label for="ACC 200">ACC 200</label>
-        <select name="ACC 200" id="ACC 200">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="E">E</option>
-        </select>
-        <input type="checkbox" id="retake ACC 200" name="retake ACC 200">
-        <label for="retake ACC 200">Retake</label><br>
-        <br><br>
-        <label for="FIN 201">FIN 201</label>
-        <select name="FIN 201" id="FIN 201">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="E">E</option>
-        </select>
-        <input type="checkbox" id="retake FIN 201" name="retake FIN 201">
-        <label for="retake FIN 201">Retake</label><br>
-        <br><br>
-        <label for="MKTG 201">MKTG 201</label>
-        <select name="MKTG 201" id="MKTG 201">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="D-">D-</option>
-            <option value="E">E</option>
-        </select>
-        <input type="checkbox" id="retake MKTG 201" name="retake MKTG 201">
-        <label for="retake MKTG 201">Retake</label><br>
-        <br><br>
-        <!--text inputs for Overall and Last 30 credit GPAs-->
-        <label for="overall">BYU Overall GPA:</label>
-        <input type="text" id="overall"><br><br>
-        <label for="last30">BYU Last 30 Credits GPA:</label>
-        <input type="text" id="last30"><br><br>
-        <!--buttons for calculating or resetting-->
-        <input type="button" onclick="calcGPA()" value="CALCULATE"><br><br>
-        <input type="button" onclick="clearCircle()" value="RESET"><br>
-        <p id="finalOutput"></p>
-        <!--Put circle on the page-->
-        <svg height="100" width="100">
-            <circle id="myCircle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" display = "none" /></svg>
-            
-    </form>
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100;
+        }
+        .container{
+            display: block;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto
+            ;
+        }
+</style>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#program">Program Overview</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#gpa">GPA</a></li>
+  </ul><br><br>
+<div id="home" class="container"><br><br>
+    <h1>BYU IS Major</h1>
+    <a href="https://marriottschool.byu.edu/infosys/" target="_blank"><img alt="BYU IS Department" src="https://marriottschool.byu.edu/infosys/wp-content/uploads/sites/35/2016/12/Bonnie-Anderson-teaching-960x404.jpg" class="center"></a>
+    <h5>Click Picture to Visit BYU IS Website</h5>
+</div>
 
 <script>
     function clearCircle() {
@@ -401,5 +338,124 @@ function calcGPA() {
 </script>
 </head>
 <body>
+<div id="program" class="container"><br><br>
+    <h3> Program Overview</h3>
+    <p> The BS Information Systems program is available as a four-year traditional degree or as a five-year integrated option where students earn both the BS IS and MISM degrees. The BS IS program is a 64-credit degree including pre-management, junior core, management core, and a capstone.</p>
+</div>
+<div id="curriculum" class="container"><br><br>
+    <h3>Curriculum</h3>
+    <p>Information systems students learn to define, develop, and maintain the information system infrastructure that supports the operations of all businesses, governments, and other institutions. The BS Information Systems degree develops the ability to function effectively as a professional, applying state-of-the-art technology in solving business problems. Students are trained in business and information systems and taught to understand complex business environments.<br><br>
+         Built on a solid foundation of business courses, the curriculum advances students’ understanding of technologies in the design and development of information systems. They gain technical expertise in systems analysis; systems design and implementation; database development and management; programming; telecommunications networking; 2-tier, 3-tier, and n-tier application development; and web application development.</p>
+</div>
+
+    
+
+    <!--drop down menu for all five courses-->
+    <h3 id="gpa">GPA Calculator</h3>
+    <form  action="/action_page.php">
+        <label for="IS 201">IS 201</label>
+        <select name="IS 201" id="IS 201">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <!--check marked "Retake" box-->
+        <input type="checkbox" id="retake IS 201" name="retake IS 201">
+        <label for="retake IS 201">Retake</label><br>
+        <br><br>
+        <label for="IS 303/CS 142">IS 303/CS 142</label>
+        <select name="IS 303/CS 142" id="IS 303/CS 142">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake IS 303/CS 142" name="retake IS 303/CS 142">
+        <label for="retake IS 303/CS 142">Retake</label><br>
+        <br><br>
+        <label for="ACC 200">ACC 200</label>
+        <select name="ACC 200" id="ACC 200">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake ACC 200" name="retake ACC 200">
+        <label for="retake ACC 200">Retake</label><br>
+        <br><br>
+        <label for="FIN 201">FIN 201</label>
+        <select name="FIN 201" id="FIN 201">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake FIN 201" name="retake FIN 201">
+        <label for="retake FIN 201">Retake</label><br>
+        <br><br>
+        <label for="MKTG 201">MKTG 201</label>
+        <select name="MKTG 201" id="MKTG 201">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake MKTG 201" name="retake MKTG 201">
+        <label for="retake MKTG 201">Retake</label><br>
+        <br><br>
+        <!--text inputs for Overall and Last 30 credit GPAs-->
+        <label for="overall">BYU Overall GPA:</label>
+        <input type="text" id="overall"><br><br>
+        <label for="last30">BYU Last 30 Credits GPA:</label>
+        <input type="text" id="last30"><br><br>
+        <!--buttons for calculating or resetting-->
+        <input type="button" onclick="calcGPA()" value="CALCULATE"><br><br>
+        <input type="button" onclick="clearCircle()" value="RESET"><br>
+        <p id="finalOutput"></p>
+        <!--Put circle on the page-->
+        <svg height="100" width="100">
+            <circle id="myCircle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" display = "none" /></svg>     
+    </form>
 </body>
 </html>
