@@ -1,0 +1,463 @@
+<!--
+    Ethan Westfall, Connor Salvesen, John Tippets, Josh Rencher, Moroni Myers
+    Section 001
+    Group 5
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Project #1</title>
+<style>
+        /*Styling for the whole page*/
+       body {
+            background:azure;
+        } 
+        h3,h1,h5 {
+            font-family:sans-serif;
+            text-align: center;
+            top: 50;
+        }
+        p {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            font-style: italic;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: #111;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100;
+        }
+        .container{
+            display: block;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto
+            ;
+        }
+</style>
+<!--
+    Nav Bar :)
+-->>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#program">Program Overview</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#gpa">GPA</a></li>
+</ul><br><br>
+<div id="home" class="container"><br><br>
+    <h1>BYU IS Major</h1>
+    <a href="https://marriottschool.byu.edu/infosys/" target="_blank"><img alt="BYU IS Department" src="https://marriottschool.byu.edu/infosys/wp-content/uploads/sites/35/2016/12/Bonnie-Anderson-teaching-960x404.jpg" class="center"></a>
+    <!--
+        Link to IS major homepage by clicking on picture
+    -->
+    <h5>Click Picture to Visit BYU IS Website</h5>
+</div>
+
+<script>
+    function clearCircle() {
+        //This function clears everything on the inputs
+        document.getElementById("IS 201").value = "blank";
+        document.getElementById("IS 303/CS 142").value = "blank";
+        document.getElementById("ACC 200").value = "blank";
+        document.getElementById("FIN 201").value = "blank";
+        document.getElementById("MKTG 201").value = "blank";
+        document.getElementById("overall").value = "";
+        document.getElementById("last30").value = "";
+        document.getElementById("retake IS 201").checked = false;
+        document.getElementById("retake IS 303/CS 142").checked = false;
+        document.getElementById("retake ACC 200").checked = false;
+        document.getElementById("retake FIN 201").checked = false;
+        document.getElementById("retake MKTG 201").checked = false;
+        document.getElementById("finalOutput").innerHTML = "";
+        document.getElementById("IS 201").focus();
+    }
+    //Round the GPA output number to two decimals
+    function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+//Takes letters and returns GPA numeric value on 4.0 scale, makes sure the recheck box is checked, returns A as 4.0, etc.
+function toGrade(letter, isRetake) {
+    if (letter == "A") {
+        if (isRetake == "Y") {
+            return 3.7;
+        }
+        else {
+            return 4.0;
+        }
+    }
+    else if (letter == "A-") {
+        if (isRetake == "Y") {
+            return 3.4;
+        }
+        else {
+            return 3.7;
+        }
+    }
+    else if (letter == "B+") {
+        if (isRetake == "Y") {
+            return 3;
+        }
+        else {
+            return 3.4;
+        }
+    }
+    else if (letter == "B") {
+        if (isRetake == "Y") {
+            return 2.7;
+        }
+        else {
+            return 3;
+        }
+    }
+    else if (letter == "B-") {
+        if (isRetake == "Y") {
+            return 2.4;
+        }
+        else {
+            return 2.7;
+        }
+    }
+    else if (letter == "C+") {
+        if (isRetake == "Y") {
+            return 2;
+        }
+        else {
+            return 2.4;
+        }
+    }
+    else if (letter == "C") {
+        if (isRetake == "Y") {
+            return 1.7;
+        }
+        else {
+            return 2;
+        }
+    }
+    else if (letter == "C-") {
+        if (isRetake == "Y") {
+            return 1.4;
+        }
+        else {
+            return 1.7;
+        }
+    }
+    else if (letter == "D+") {
+        if (isRetake == "Y") {
+            return 1;
+        }
+        else {
+            return 1.4;
+        }
+    }
+    else if (letter == "D") {
+        if (isRetake == "Y") {
+            return 0.7;
+        }
+        else {
+            return 1;
+        }
+    }
+    else if (letter == "D-") {
+        if (isRetake == "Y") {
+            return 0;
+        }
+        else {
+            return .7;
+        }
+    }
+    else {
+        return 0;
+    }
+}
+
+function calcGPA() {
+    //Declare variables
+    var tempLetter;
+    var tempIsRetake;
+    var IS201;
+    var IS303;
+    var ACC200;
+    var FIN201;
+    var MKTG201;
+    var sumBusPrereq;
+    var ovrGPA;
+    var last30GPA;
+    var appGPA;
+
+    //Check value within each box, if empty alert message and end function :)
+    if (document.getElementById("IS 201").value == "blank") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+    if (document.getElementById("IS 303/CS 142").value == "blank") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+    if (document.getElementById("ACC 200").value == "blank") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+    if (document.getElementById("FIN 201").value == "blank") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+    if (document.getElementById("MKTG 201").value == "blank") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+    if (document.getElementById("overall").value == "") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+    if (document.getElementById("last30").value == "") {
+        alert("You must select an item in each drop down and enter a value in the GPA text boxes!");
+        document.getElementById("IS 201").focus();
+        return;
+    }
+
+    //Testing to see if the check box is checked or not for each of the drop downs.
+
+    tempLetter = (document.getElementById("IS 201").value);
+    if (document.getElementById("retake IS 201").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
+    IS201 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = (document.getElementById("IS 303/CS 142").value);
+    if (document.getElementById("retake IS 303/CS 142").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
+    IS303 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = (document.getElementById("ACC 200").value);
+    if (document.getElementById("retake ACC 200").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
+    ACC200 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = (document.getElementById("FIN 201").value);
+    if (document.getElementById("retake FIN 201").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
+    FIN201 = toGrade(tempLetter, tempIsRetake);
+
+    tempLetter = (document.getElementById("MKTG 201").value);
+    if (document.getElementById("retake MKTG 201").checked == true) {
+        tempIsRetake = "Y";
+    }
+    else {
+        tempIsRetake = "N";
+    }
+    MKTG201 = toGrade(tempLetter, tempIsRetake);
+    
+    //Assign the value in the text input for overall GPA
+    ovrGPA = parseFloat((document.getElementById("overall").value));
+
+    //Assign the value in the text input to last 30 credits
+    last30GPA = parseFloat((document.getElementById("last30").value));
+
+    //Next we combine the scores of FIN 201, ACC 200, and MKTG 201 into 1 score
+    sumBusPrereq = (ACC200 + FIN201 + MKTG201)/3;
+
+    //This section we are calculating the application GPA finding the average of all of our scores. Because we have already combined ACC, FIN, and MKTG
+    //we do not need to do anything specific for weighting, as each is 20%, so we do a simple average calculation
+    appGPA = (IS201 + IS303 + sumBusPrereq + ovrGPA + last30GPA)/5;
+    appGPA = round(appGPA, 2);
+
+
+    //Print overall applicant GPA
+    document.getElementById("finalOutput").innerHTML = appGPA;
+
+    //Display the circle as green, yellow, or red depending on GPA (above 3.7, 3.4, or < 3.4)
+    if (appGPA >= 3.7) {
+        
+        document.getElementById("myCircle").style.display = "block";                                         
+        document.getElementById("myCircle").style.fill="green";
+    }
+    else if (appGPA >= 3.4) {
+       
+        document.getElementById("myCircle").style.display = "block";                                         
+        document.getElementById("myCircle").style.fill="yellow";
+    }
+    else {
+       
+        document.getElementById("myCircle").style.display = "block";                                         
+        document.getElementById("myCircle").style.fill="red";
+    }
+}
+</script>
+</head>
+<body>
+    <!--
+        Program Overview and Curriculum Info
+    -->>
+<div id="program" class="container"><br><br>
+    <h3> Program Overview</h3>
+    <p> The BS Information Systems program is available as a four-year traditional degree or as a five-year integrated option where students earn both the BS IS and MISM degrees. The BS IS program is a 64-credit degree including pre-management, junior core, management core, and a capstone.</p>
+</div>
+<div id="curriculum" class="container"><br><br>
+    <h3>Curriculum</h3>
+    <p>Information systems students learn to define, develop, and maintain the information system infrastructure that supports the operations of all businesses, governments, and other institutions. The BS Information Systems degree develops the ability to function effectively as a professional, applying state-of-the-art technology in solving business problems. Students are trained in business and information systems and taught to understand complex business environments.<br><br>
+         Built on a solid foundation of business courses, the curriculum advances students’ understanding of technologies in the design and development of information systems. They gain technical expertise in systems analysis; systems design and implementation; database development and management; programming; telecommunications networking; 2-tier, 3-tier, and n-tier application development; and web application development.</p>
+</div>
+
+    
+
+    <!--drop down menu for all five courses-->
+    <h3 id="gpa">GPA Calculator</h3>
+    <form  action="/action_page.php">
+        <label for="IS 201">IS 201</label>
+        <select name="IS 201" id="IS 201">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <!--check marked "Retake" box-->
+        <input type="checkbox" id="retake IS 201" name="retake IS 201">
+        <label for="retake IS 201">Retake</label><br>
+        <br><br>
+        <label for="IS 303/CS 142">IS 303/CS 142</label>
+        <select name="IS 303/CS 142" id="IS 303/CS 142">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake IS 303/CS 142" name="retake IS 303/CS 142">
+        <label for="retake IS 303/CS 142">Retake</label><br>
+        <br><br>
+        <label for="ACC 200">ACC 200</label>
+        <select name="ACC 200" id="ACC 200">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake ACC 200" name="retake ACC 200">
+        <label for="retake ACC 200">Retake</label><br>
+        <br><br>
+        <label for="FIN 201">FIN 201</label>
+        <select name="FIN 201" id="FIN 201">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake FIN 201" name="retake FIN 201">
+        <label for="retake FIN 201">Retake</label><br>
+        <br><br>
+        <label for="MKTG 201">MKTG 201</label>
+        <select name="MKTG 201" id="MKTG 201">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+        </select>
+        <input type="checkbox" id="retake MKTG 201" name="retake MKTG 201">
+        <label for="retake MKTG 201">Retake</label><br>
+        <br><br>
+        <!--text inputs for Overall and Last 30 credit GPAs-->
+        <label for="overall">BYU Overall GPA:</label>
+        <input type="text" id="overall"><br><br>
+        <label for="last30">BYU Last 30 Credits GPA:</label>
+        <input type="text" id="last30"><br><br>
+        <!--buttons for calculating or resetting-->
+        <input type="button" onclick="calcGPA()" value="CALCULATE"><br><br>
+        <input type="button" onclick="clearCircle()" value="RESET"><br>
+        <p id="finalOutput"></p>
+        <!--Put circle on the page-->
+        <svg height="100" width="100">
+            <circle id="myCircle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" display = "none" /></svg>     
+    </form>
+</body>
+</html>
